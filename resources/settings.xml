@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<settings>
+    <category label="32020">
+        <setting label="32021" type="number" id="evdev" default="0"/>
+        <setting label="32022" type="number" id="vol_step" default="5"/>
+    </category>
+</settings>
