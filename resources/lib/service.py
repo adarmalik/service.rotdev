@@ -6,7 +6,7 @@ import xbmcaddon
 
 import struct
 import select
-
+import os
 
 def log(txt):
     message = '%s: %s' % ("service.rotdev", txt.encode('ascii', 'ignore'))
@@ -19,6 +19,16 @@ def getVolume():
     if (dct.has_key("result")) and (dct["result"].has_key("volume")):
         curVol = dct["result"]["volume"]
     return curVol
+
+def getInputDevice():
+    dev = -1
+    for fn in os.listdir('/sys/class/input/'):
+        if fn.startswith('event'):
+            with open('/sys/class/input/' + fn + '/device/name') as f:
+                if f.readline(8).startswith('rotary'):
+                    dev = int(fn[5:])
+                    break
+    return dev
 
 class Rotary:    
     def __init__(self):
@@ -36,8 +46,14 @@ class Rotary:
         log("setup")
         self.stop()
 
+        dev = getInputDevice()
+        if dev == -1:
+            log("No rotary device found")
+            return
+
+        _evdev = "/dev/input/event" + str(dev)
+
         _this = xbmcaddon.Addon()
-        _evdev = "/dev/input/event" + _this.getSetting("evdev")
         self._vol = int(_this.getSetting("vol_step"))
 
         log("config: %s %i" % (_evdev, self._vol))

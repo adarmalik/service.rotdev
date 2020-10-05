@@ -21,10 +21,6 @@ msgctxt "#32020"
 msgid "General"
 msgstr "Allgemein"
 
-msgctxt "#32021"
-msgid "Input event device"
-msgstr "Input Event Gerät"
-
 msgctxt "#32022"
 msgid "Volume step"
 msgstr "Lautstärkeschritt"

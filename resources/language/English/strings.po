@@ -20,10 +20,6 @@ msgctxt "#32020"
 msgid "General"
 msgstr ""
 
-msgctxt "#32021"
-msgid "Input event device"
-msgstr ""
-
 msgctxt "#32022"
 msgid "Volume step"
 msgstr ""
