@@ -10,7 +10,7 @@ import os
 
 def log(txt):
     message = '%s: %s' % ("service.rotdev", txt.encode('ascii', 'ignore'))
-    xbmc.log(msg=message, level=xbmc.LOGNOTICE)
+    xbmc.log(msg=message, level=xbmc.LOGINFO)
 
 def getVolume():
     curVol = -1
