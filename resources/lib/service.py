@@ -10,13 +10,13 @@ import os
 
 def log(txt):
     message = '%s: %s' % ("service.rotdev", txt.encode('ascii', 'ignore'))
-    xbmc.log(msg=message, level=xbmc.LOGNOTICE)
+    xbmc.log(msg=message, level=xbmc.LOGINFO)
 
 def getVolume():
     curVol = -1
     resp = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "Application.GetProperties", "params": { "properties": [ "volume"] }, "id": 1}')
     dct = json.loads(resp)
-    if (dct.has_key("result")) and (dct["result"].has_key("volume")):
+    if ("result" in dct and "volume" in dct["result"]):
         curVol = dct["result"]["volume"]
     return curVol
 
